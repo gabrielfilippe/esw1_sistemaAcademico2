@@ -66,6 +66,85 @@ class Gerenciar_cursos(models.Model):
     carga_horaria_total = models.IntegerField(default=0)
     duracao_meses = models.IntegerField(default=0)
     instituicao_de_ensino = models.ForeignKey(Instituicao_de_ensino, on_delete=models.CASCADE)
+    area_do_saber = models.ForeignKey(Area_do_saber, on_delete=models.CASCADE)
+
+class Gerenciar_turnos(models.Model):
+    class Meta:
+        verbose_name = 'Turno'
+        verbose_name_plural = 'Turnos'
+
+    nome = models.CharField(max_length=100)
+
+class Gerenciar_disciplinas(models.Model):
+    class Meta:
+        verbose_name = 'Disciplina'
+        verbose_name_plural = 'Disciplinas'
+    
+    nome = models.CharField(max_length=100)
+    area_do_saber = models.ForeignKey(Area_do_saber, on_delete=models.CASCADE)
+
+class Gerenciar_matriculas(models.Model):
+    class Meta:
+        verbose_name = 'Matricula'
+        verbose_name_plural = 'Matriculas'
+    
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    gerenciar_curso = models.ForeignKey(Gerenciar_cursos, on_delete=models.CASCADE)
+    instituicao_de_ensino = models.ForeignKey(Instituicao_de_ensino, on_delete=models.CASCADE)
+    data_inicio = models.DateField(verbose_name='Data Inicio')
+    data_previsao_termino = models.DateField(verbose_name='Data Previsao Termino')
+
+class Tipo_avaliacao(models.Model):
+    class Meta:
+        verbose_name = 'Tipo de avaliacao'
+        verbose_name_plural = 'Tipos de avaliacoes'
+    
+    nome = models.CharField(max_length=100)
+
+
+class Gerenciar_avaliacao(models.Model):
+    class Meta:
+        verbose_name = 'Avaliacao'
+        verbose_name_plural = 'Avaliacoes'
+
+    descricao = models.CharField(max_length=100)
+    gerenciar_cursos = models.ForeignKey(Gerenciar_cursos, on_delete= models.CASCADE)
+    disciplinas = models.ForeignKey(Gerenciar_disciplinas, on_delete= models.CASCADE)
+    nota = models.CharField(max_length=100)
+    tipo_avaliacao = models.ForeignKey(Tipo_avaliacao, on_delete=models.CASCADE)
+
+
+class Gerenciar_frequencia(models.Model):
+    class Meta:
+        verbose_name = 'Frequencia'
+        verbose_name_plural = 'Frequencias'
+    
+
+    curso = models.ForeignKey(Gerenciar_cursos, on_delete= models.CASCADE)
+    disciplina = models.ForeignKey(Gerenciar_disciplinas, on_delete=models.CASCADE)
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    numero_de_faltas = models.IntegerField(default=0)
+
+
+class Gerenciar_turmas(models.Model):
+    class Meta:
+        verbose_name = 'Turma'
+        verbose_name_plural = 'Turmas'
+    
+
+    nome = models.CharField(max_length=100)
+    turno = models.ForeignKey(Gerenciar_turnos, on_delete=models.CASCADE)
+
+
+
+
+
+
+
+
+
+
+
 
     
     
