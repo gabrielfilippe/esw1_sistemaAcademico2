@@ -5,6 +5,7 @@ from .views import *
 #Primeiro parametro = O que vai aparecer na URL, segundo parametro = função que vai ser chamada, terceiro parametro = nome da rota
 
 urlpatterns = [
+    path('home/', home, name='home'),
     path('alunos/', alunos, name='alunos'),
     path('instituicoes/', instituicoes, name='instituicoes'),
     path('cidades/', cidades, name='cidades'), 

@@ -3,6 +3,11 @@ from .models import *
 
 # Create your views here.
 
+def home(request):
+    context = {
+    }
+    return render(request, 'home.html', context)
+
 def alunos(request):
     context = {
         'alunos': Aluno.objects.all()

@@ -19,6 +19,7 @@ class Uf(models.Model):
         verbose_name_plural = 'UFS'
 
     nome = models.CharField(max_length = 100)
+    abreviacao_uf = models.CharField(max_length = 2)
 
     def __str__(self):
         return self.nome
@@ -53,6 +54,7 @@ class Pessoa(models.Model):
     email = models.EmailField(verbose_name='Email')
     ocupacao = models.ForeignKey(Ocupacao, on_delete=models.CASCADE, verbose_name='Nome da ocupação')
     cidade = models.ForeignKey(Cidade, on_delete=models.CASCADE, verbose_name='Cidade')
+    
 
     def __str__(self):
         return f'{self.nome}'
@@ -77,6 +79,7 @@ class Instituicao(models.Model):
     site = models.CharField(max_length=100, verbose_name='Site')
     telefone = models.CharField(max_length=100, verbose_name='Telefone')
     cidade = models.ForeignKey(Cidade, on_delete=models.CASCADE, verbose_name='Cidade')
+    endereco = models.CharField(max_length=100, verbose_name='Endereço')
 
     def __str__(self):
         return f'{self.nome}'
@@ -126,6 +129,8 @@ class Aluno(Pessoa):
     class Meta:
         verbose_name = 'Aluno'
         verbose_name_plural = 'Alunos'
+
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, verbose_name='Curso')
 
     def __str__(self):
         return f'{self.nome}'
