@@ -161,14 +161,14 @@ class Matricula(models.Model):
         return f'{self.nome}'
 
 class TipoAvaliacao(models.Model):
-    class Meta:
-        verbose_name = 'Tipo de avaliação'
-        verbose_name_plural = 'Tipos de avaliações'
+     class Meta:
+         verbose_name = 'Tipo de avaliação'
+         verbose_name_plural = 'Tipos de avaliações'
     
-    nome = models.CharField(max_length=100, verbose_name='Nome')
+     nome = models.CharField(max_length=100, verbose_name='Nome')
 
-    def __str__(self):
-        return f'{self.nome}'
+     def __str__(self):
+         return f'{self.nome}'
 
 
 class Avaliacao(models.Model):

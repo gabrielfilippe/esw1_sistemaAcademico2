@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Instituições</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Cidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for instituicao in instituicoes %}
+            <tr>
+                <td>{{ instituicao.nome }}</td>
+                <td>{{ instituicao.endereco }}</td>
+                <td>{{ instituicao.cidade }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" class="text-center">Nenhuma instituição cadastrada</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock content %}

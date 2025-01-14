@@ -1,0 +1,32 @@
+{% extends  'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Alunos</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Curso</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aluno in alunos %}
+            <tr>
+                <td>{{ aluno.nome }}</td>
+                <td>{{ aluno.idade }}</td>
+                <td>{{ aluno.curso }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" class="text-center">Nenhum aluno cadastrado</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+    
+{% endblock content %}
